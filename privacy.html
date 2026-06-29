@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="سياسة الخصوصية - Shoor" />
+<meta name="theme-color" content="#0E1A2B" />
+<title>سياسة الخصوصية · Shoor</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy:        #0E1A2B;
+    --navy-soft:   #1B2A3F;
+    --orange:      #FF6B1A;
+    --orange-soft: #FF8C42;
+    --green:       #2EC4B6;
+    --red:         #E63946;
+    --off-white:   #F7F8FA;
+    --gray-100:    #EEF1F5;
+    --gray-300:    #C9D2DD;
+    --gray-500:    #6B7785;
+    --gray-700:    #2D3748;
+
+    --font-ar: 'Cairo', system-ui, sans-serif;
+    --font-en: 'Inter', system-ui, sans-serif;
+
+    --radius:    12px;
+    --radius-lg: 20px;
+    --shadow:    0 4px 16px rgba(14,26,43,0.08);
+    --shadow-lg: 0 20px 50px rgba(14,26,43,0.12);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-ar);
+    background: var(--off-white);
+    color: var(--navy);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--orange); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+  /* NAV */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(247, 248, 250, 0.92);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto; padding: 16px 24px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    font-family: var(--font-en); font-weight: 900; font-size: 22px;
+    letter-spacing: -0.02em; color: var(--navy);
+  }
+  .logo-mark {
+    width: 36px; height: 36px;
+    background: var(--navy); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--orange); font-weight: 900; font-size: 20px;
+    font-family: var(--font-en);
+  }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--gray-700); font-weight: 600; font-size: 14px;
+  }
+
+  /* MAIN */
+  .page { padding: 140px 0 80px; }
+  .page-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: white; border: 1px solid var(--gray-100);
+    padding: 6px 14px; border-radius: 100px;
+    font-size: 12px; font-weight: 700; color: var(--gray-700);
+    margin-bottom: 20px;
+  }
+  .badge .dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--green);
+  }
+  h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 900;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+  .subtitle { color: var(--gray-500); font-size: 16px; }
+
+  /* EDITOR CARD */
+  .editor-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    border: 1px solid var(--gray-100);
+  }
+  .editor-toolbar {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--gray-100);
+    background: var(--off-white);
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 12px; flex-wrap: wrap;
+  }
+  .toolbar-info {
+    font-size: 13px; color: var(--gray-500);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .toolbar-info .dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--green);
+  }
+  .toolbar-info .dot.saved { background: var(--green); }
+  .toolbar-info .dot.unsaved { background: #FFB800; }
+  .toolbar-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .toolbar-btn {
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-size: 13px; font-weight: 700;
+    border: 1.5px solid var(--gray-300);
+    background: white;
+    color: var(--gray-700);
+    transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .toolbar-btn:hover { border-color: var(--navy); color: var(--navy); }
+  .toolbar-btn.primary {
+    background: var(--orange); color: white; border-color: var(--orange);
+  }
+  .toolbar-btn.primary:hover { background: var(--orange-soft); border-color: var(--orange-soft); }
+  .toolbar-btn.danger {
+    background: white; color: var(--red); border-color: var(--gray-300);
+  }
+  .toolbar-btn.danger:hover { background: var(--red); color: white; border-color: var(--red); }
+  .toolbar-btn svg { width: 14px; height: 14px; }
+
+  .editor-body { padding: 0; }
+  .editor-body textarea {
+    width: 100%;
+    min-height: 480px;
+    padding: 32px;
+    border: none;
+    background: white;
+    font-family: var(--font-ar);
+    font-size: 16px;
+    line-height: 1.95;
+    color: var(--gray-700);
+    direction: rtl;
+    resize: vertical;
+    transition: background 0.2s;
+  }
+  .editor-body textarea:focus {
+    outline: none;
+    background: #FFFEFB;
+  }
+
+  .editor-footer {
+    padding: 16px 24px;
+    border-top: 1px solid var(--gray-100);
+    background: var(--off-white);
+    display: flex; justify-content: space-between;
+    font-size: 12px; color: var(--gray-500);
+    flex-wrap: wrap; gap: 8px;
+  }
+  .editor-footer .meta { display: flex; gap: 16px; flex-wrap: wrap; }
+  .editor-footer .meta span strong { color: var(--navy); font-weight: 700; }
+
+  /* INFO NOTES */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .info-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 20px;
+    border: 1px solid var(--gray-100);
+  }
+  .info-card .icon {
+    font-size: 24px; margin-bottom: 8px;
+  }
+  .info-card h4 {
+    font-size: 14px; font-weight: 800; margin-bottom: 4px;
+  }
+  .info-card p {
+    font-size: 12px; color: var(--gray-500); line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .info-grid { grid-template-columns: 1fr; }
+    .editor-body textarea { padding: 20px; font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <span class="logo-mark">S</span>
+      <span>Shoor<span style="color: var(--orange);">.</span></span>
+    </a>
+    <a href="/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      العودة للرئيسية
+    </a>
+  </div>
+</nav>
+
+<main class="page">
+  <div class="container">
+
+    <div class="page-header">
+      <div class="badge">
+        <span class="dot"></span>
+        صفحة قابلة للتعديل
+      </div>
+      <h1>سياسة الخصوصية</h1>
+      <p class="subtitle">حرّر النص، احفظ، أو استعد الافتراضي — التغييرات تُحفظ في متصفحك</p>
+    </div>
+
+    <div class="editor-card">
+      <div class="editor-toolbar">
+        <div class="toolbar-info">
+          <span class="dot saved" id="saveStatusDot"></span>
+          <span id="saveStatusText">جميع التغييرات محفوظة</span>
+        </div>
+        <div class="toolbar-actions">
+          <button class="toolbar-btn" id="exportPolicy" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            تصدير
+          </button>
+          <button class="toolbar-btn danger" id="resetPolicy" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+            استعادة الافتراضي
+          </button>
+          <button class="toolbar-btn primary" id="savePolicy" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+            حفظ التغييرات
+          </button>
+        </div>
+      </div>
+
+      <div class="editor-body">
+        <textarea id="policyEditor" spellcheck="false"></textarea>
+      </div>
+
+      <div class="editor-footer">
+        <div class="meta">
+          <span><strong id="charCount">0</strong> حرف</span>
+          <span><strong id="wordCount">0</strong> كلمة</span>
+          <span>آخر حفظ: <strong id="lastSaved">—</strong></span>
+        </div>
+        <div>Ctrl/⌘ + S للحفظ السريع</div>
+      </div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="icon">💾</div>
+        <h4>حفظ تلقائي</h4>
+        <p>أي تعديل يُحفظ تلقائياً بعد 1.2 ثانية في متصفحك.</p>
+      </div>
+      <div class="info-card">
+        <div class="icon">🔄</div>
+        <h4>استعادة الافتراضي</h4>
+        <p>لو غيّرت النص وتريد ترجع للنص الأصلي بضغطة واحدة.</p>
+      </div>
+      <div class="info-card">
+        <div class="icon">⬇️</div>
+        <h4>تصدير</h4>
+        <p>نزّل السياسة كملف TXT بتاريخ اليوم لأرشفتها.</p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script>
+  const POLICY_STORAGE_KEY = 'shoor.privacyPolicy.v1';
+  const POLICY_DEFAULT = `سياسة الخصوصية — Shoor
+
+آخر تحديث: 2026
+
+سياسة الخصوصية — Shoor
+
+آخر تحديث: 2026
+
+1. المقدمة
+نلتزم في Shoor بحماية خصوصية زبائننا (التجار) وبيانات زبائنهم (المستهلكين). توضح هذه السياسة كيف نجمع، نستخدم، نحفظ، ونحمي المعلومات الشخصية.
+
+الأساس القانوني للتعامل مع بياناتكم هو القانون (18/07) المتعلق بحماية الاشخاص الطبيعيين في مجال معالجة المعطيات ذات الطابع الشخصي والقانون (18/05) المتعلق بالتجارة الالكترونية بحيث يتم  بناءا على موافقتكم الصريحة على ذلك
+
+2. المعلومات التي نجمعها
+نجمع فقط المعلومات الضرورية لتقديم خدمة التأكيد ومتابعة الطلبات:
+- اسم التاجر، اسم المتجر، رقم الهاتف، البريد الإلكتروني.
+- بيانات الطلبات (اسم الزبون، عنوان التوصيل، رقم الهاتف، قيمة الطلب).
+- بيانات الاتصال الناتجة عن المكالمات (نتيجتها فقط، مدة المكالمة، ملخص).
+
+3. كيف نستخدم معلوماتك
+- تقديم خدمة تأكيد الطلبات.
+- متابعة حالة التوصيل مع شركة الشحن.
+- التواصل معك بخصوص حسابك.
+- تحسين الخدمة ومنع الاحتيال.
+- نستخدمها فقط لغرض التأكيد، لا نبيعها ولا نشاركها مع طرف ثالث لأغراض تسويقية.
+
+4. حماية البيانات
+- البيانات محفوظة على خوادم مشفّرة.
+- الوصول محدود للموظفين المصرّح لهم فقط.
+- ملتزمين بـ NDA كامل مع كل عضو في الفريق.
+- نستخدم HTTPS لكل الاتصالات.
+
+5. مدة الاحتفاظ بالبيانات
+- بيانات الزبائن: 36 شهر من إكمال الطلب ثم تُحذف تلقائياً.
+- بيانات التجار: طوال فترة التعاون + 12 شهر بعد آخر نشاط (لأغراض الفوترة فقط).
+- بيانات المحاسبة: 10 سنوات كما يقتضي القانون التجاري الجزائري.
+
+6. مشاركة البيانات مع أطراف ثالثة
+نشارك بيانات الزبائن فقط مع:
+- شركة التوصيل المختارة من التاجر.
+- مزودي الدفع (عند الحاجة).
+- لا نشارك أي شيء لأي غرض تسويقي.
+
+7. حقوقك
+يحق لك في أي وقت:
+- طلب نسخة من بياناتك.
+- تصحيح أي معلومة خاطئة.
+- طلب حذف بياناتك.
+- سحب الموافقة على المعالجة.
+- تقديم شكوى للسلطة المختصة .
+
+8. ملفات تعريف الارتباط (Cookies)
+الموقع يستخدم cookies تقنية فقط (إعدادات اللغة، الجلسة). لا نستخدم cookies تتبعية أو إعلانية.
+
+9. التعديلات
+نحتفظ بالحق في تعديل هذه السياسة. سنُعلمك عبر البريد الإلكتروني قبل 30 يوماً من أي تغيير جوهري.
+
+10. التواصل
+لأي سؤال يخص الخصوصية:
+- البريد: contact@shoor.online
+- الهاتف: +213 782 09 03 53
+`;
+
+  const policyEditor    = document.getElementById('policyEditor');
+  const savePolicyBtn   = document.getElementById('savePolicy');
+  const resetPolicyBtn  = document.getElementById('resetPolicy');
+  const exportPolicyBtn = document.getElementById('exportPolicy');
+  const saveStatusDot   = document.getElementById('saveStatusDot');
+  const saveStatusText  = document.getElementById('saveStatusText');
+  const charCount       = document.getElementById('charCount');
+  const wordCount       = document.getElementById('wordCount');
+  const lastSaved       = document.getElementById('lastSaved');
+
+  let isDirty = false;
+  let saveTimer = null;
+
+  function setStatus(saved) {
+    if (saved) {
+      saveStatusDot.classList.remove('unsaved');
+      saveStatusDot.classList.add('saved');
+      saveStatusText.textContent = 'جميع التغييرات محفوظة';
+    } else {
+      saveStatusDot.classList.remove('saved');
+      saveStatusDot.classList.add('unsaved');
+      saveStatusText.textContent = 'تغييرات غير محفوظة...';
+    }
+  }
+
+  function updateCounts() {
+    const txt = policyEditor.value;
+    charCount.textContent = txt.length.toLocaleString('ar-DZ');
+    const words = txt.trim() ? txt.trim().split(/\s+/).length : 0;
+    wordCount.textContent = words.toLocaleString('ar-DZ');
+  }
+
+  function loadPolicy() {
+    try {
+      const saved = localStorage.getItem(POLICY_STORAGE_KEY);
+      policyEditor.value = saved && saved.trim() ? saved : POLICY_DEFAULT;
+    } catch (e) {
+      policyEditor.value = POLICY_DEFAULT;
+    }
+    isDirty = false;
+    setStatus(true);
+    updateCounts();
+    try {
+      const meta = localStorage.getItem(POLICY_STORAGE_KEY + '.meta');
+      if (meta) {
+        const d = new Date(JSON.parse(meta).savedAt);
+        lastSaved.textContent = d.toLocaleString('ar-DZ', { dateStyle: 'short', timeStyle: 'short' });
+      } else {
+        lastSaved.textContent = 'افتراضي';
+      }
+    } catch (e) {
+      lastSaved.textContent = '—';
+    }
+  }
+
+  function savePolicy(auto = false) {
+    try {
+      localStorage.setItem(POLICY_STORAGE_KEY, policyEditor.value);
+      localStorage.setItem(POLICY_STORAGE_KEY + '.meta', JSON.stringify({ savedAt: Date.now() }));
+      const d = new Date();
+      lastSaved.textContent = d.toLocaleString('ar-DZ', { dateStyle: 'short', timeStyle: 'short' }) + (auto ? ' (تلقائي)' : '');
+      isDirty = false;
+      setStatus(true);
+      if (!auto) {
+        savePolicyBtn.innerHTML = '✓ تم الحفظ';
+        savePolicyBtn.style.background = 'var(--green)';
+        savePolicyBtn.style.borderColor = 'var(--green)';
+        setTimeout(() => {
+          savePolicyBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg> حفظ التغييرات`;
+          savePolicyBtn.style.background = '';
+          savePolicyBtn.style.borderColor = '';
+        }, 1500);
+      }
+    } catch (e) {
+      alert('تعذّر الحفظ. تأكد أن المتصفح يسمح بحفظ البيانات المحلية.');
+    }
+  }
+
+  function resetPolicy() {
+    if (!confirm('استعادة النص الافتراضي؟ التعديلات الحالية راح تُمحى.')) return;
+    policyEditor.value = POLICY_DEFAULT;
+    savePolicy(false);
+  }
+
+  function exportPolicy() {
+    const txt = policyEditor.value;
+    const blob = new Blob([txt], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const stamp = new Date().toISOString().slice(0, 10);
+    a.href = url;
+    a.download = `shoor-privacy-policy-${stamp}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  // Warn before leaving with unsaved changes
+  window.addEventListener('beforeunload', (e) => {
+    if (isDirty) {
+      e.preventDefault();
+      e.returnValue = '';
+    }
+  });
+
+  // Events
+  policyEditor.addEventListener('input', () => {
+    isDirty = true;
+    setStatus(false);
+    updateCounts();
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => savePolicy(true), 1200);
+  });
+  savePolicyBtn.addEventListener('click', () => savePolicy(false));
+  resetPolicyBtn.addEventListener('click', resetPolicy);
+  exportPolicyBtn.addEventListener('click', exportPolicy);
+
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+      e.preventDefault();
+      savePolicy(false);
+    }
+  });
+
+  loadPolicy();
+</script>
+
+</body>
+</html>
